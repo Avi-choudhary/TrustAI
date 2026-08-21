@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TrustAI — Settings</title>
+  <style>
+    body {
+      max-width: 480px;
+      margin: 40px auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+      background: #F7F4EF;
+      color: #171513;
+      padding: 0 20px;
+    }
+    h1 { font-size: 18px; }
+    p.help { font-size: 13px; color: #625E59; line-height: 1.5; }
+    label { display: block; font-size: 13px; font-weight: 600; margin: 20px 0 6px; }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(23,21,19,0.15);
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .btn {
+      margin-top: 16px;
+      border: 1px solid #FF6B2C;
+      background: #FF6B2C;
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    #saved { font-size: 12px; color: #087A5B; margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>TrustAI extension settings</h1>
+  <p class="help">
+    Point the extension at your TrustAI backend (the FastAPI server started with
+    <code>uvicorn app.main:app --reload --port 8000</code>). Use
+    <code>http://localhost:8000</code> for local development, or your deployed
+    backend's URL once TrustAI is hosted.
+  </p>
+
+  <label for="apiBase">Backend API base URL</label>
+  <input type="text" id="apiBase" placeholder="http://localhost:8000" />
+  <div>
+    <button id="saveBtn" class="btn">Save</button>
+    <span id="saved" style="display:none;">Saved</span>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+networkx>=3.3          # aggregation/graph_risk_engine.py — graph-based risk fusion
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic>=2.12,<3
+pydantic-settings>=2.12,<3
+email-validator>=2.0.0
+
+# JWT Authentication & Security:
+PyJWT>=2.8.0
+pwdlib[argon2]>=0.2.0
+SQLAlchemy>=2.0.0
+
+# Payment Gateway (Razorpay):
+razorpay>=1.4.1
+
+# Used by app/services/deepfake_service.py (AI-generated image detection):
+pillow>=10.4
+opencv-python-headless>=4.10
+numpy>=2.1
+requests>=2.32
+# c2pa-python is optional — Layer 1 (C2PA metadata) degrades gracefully if
+# it's not installed. Uncomment if you want it:
+# c2pa-python==0.5.0
+
+# Used by pipelines/document_pipeline.py and friends (document detection):
+pymupdf>=1.24        # `fitz` — PDF rendering + metadata (pdf_forensics.py)
+google-genai>=0.3     # Gemini visual-forensics pass (services/gemini_forensics.py)
+python-dotenv>=1.0    # loads GEMINI_API_KEY from .env
+# PaddleOCR is optional — the pipeline degrades gracefully (OCR/layout and
+# field-level checks are skipped) if it isn't installed. It's a heavy
+# install (~1-2GB with paddlepaddle); add it when you're ready for real
+# OCR:
+# paddleocr==2.8.1
+# paddlepaddle==2.6.2

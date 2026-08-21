@@ -1,0 +1,38 @@
+# Virtual environments
+.venv/
+venv/
+.venv_trustai/
+env/
+ENV/
+
+# Python byte code and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local Environment Variables
+.env
+.env.*
+!.env.example
+
+# Local SQLite Database and runtime data
+*.db
+*.sqlite
+*.sqlite3
+storage/uploads/*
+!storage/uploads/.gitkeep
+storage/ledger.json
+
+# Local logs
+*.log
+backend-dev.log
+backend-dev-error.log
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

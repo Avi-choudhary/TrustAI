@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------
+   Theme tokens — every semantic Tailwind color (paper, ink, seal, mist…)
+   resolves through these "R G B" triplets. :root holds the light values
+   the site always boots with; .dark on <html> (toggled from the header,
+   see src/context/ThemeContext.jsx) swaps in the forensic dark palette.
+   The site never remembers a previous dark-mode choice — it always opens
+   in light mode and dark is an explicit, per-visit opt-in.
+--------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --color-paper: 247 244 239;
+  --color-paperDark: 255 255 255;
+  --color-ink: 23 21 19;
+  --color-inkSoft: 98 94 89;
+  --color-graphite: 138 132 125;
+  --color-graphiteFaint: 162 156 148;
+
+  --color-low: 8 122 91;
+  --color-lowSoft: 232 246 240;
+  --color-medium: 165 107 0;
+  --color-mediumSoft: 255 244 216;
+  --color-high: 217 45 58;
+  --color-highSoft: 253 235 237;
+
+  --color-seal: 255 107 44;
+  --color-sealHover: 232 90 32;
+  --color-sealSoft: 255 240 231;
+  --color-violet: 255 138 91;
+  --color-violetSoft: 255 228 212;
+  --color-cyan: 232 103 46;
+  --color-cyanSoft: 255 228 212;
+
+  --color-mist: 241 237 230;
+  --color-mistDark: 228 222 213;
+
+  --shadow-rgb: 35 25 15;
+  --body-grid-opacity: 0.035;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-paper: 11 10 9;
+  --color-paperDark: 21 19 18;
+  --color-ink: 245 241 236;
+  --color-inkSoft: 182 176 169;
+  --color-graphite: 129 123 117;
+  --color-graphiteFaint: 117 111 104;
+
+  --color-low: 24 184 137;
+  --color-lowSoft: 11 51 41;
+  --color-medium: 242 176 30;
+  --color-mediumSoft: 58 39 8;
+  --color-high: 255 90 99;
+  --color-highSoft: 58 17 20;
+
+  --color-seal: 255 107 44;
+  --color-sealHover: 255 122 61;
+  --color-sealSoft: 42 23 16;
+  --color-violet: 255 138 69;
+  --color-violetSoft: 46 27 16;
+  --color-cyan: 255 178 122;
+  --color-cyanSoft: 46 27 16;
+
+  --color-mist: 16 15 14;
+  --color-mistDark: 25 23 22;
+
+  --shadow-rgb: 0 0 0;
+  --body-grid-opacity: 0.045;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Anchor links (#overview, #faq, #audiences, #signals) were scrolling their
+   target section flush to the top of the viewport, right underneath the
+   sticky header (h-16 = 64px), so the heading rendered clipped/overlapped
+   by the nav bar. scroll-padding-top keeps every in-page jump offset by
+   the header's height automatically. */
+html {
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  background-color: rgb(var(--color-paper));
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(var(--color-ink) / var(--body-grid-opacity)) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: rgb(var(--color-ink));
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* The wordmark PNG is dark "TRUST" text baked for light surfaces —
+   invert it so it stays legible against dark-mode headers/panels. */
+.dark .brand-wordmark {
+  filter: invert(1) brightness(1.7);
+}
+
+/* visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #FF6B2C;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.tag-tab {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* Small caption label — plain (no italic serif) small-caps style eyebrow,
+   used above headings across the marketing site. */
+.eyebrow-serif {
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+
+.font-display {
+  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+}
+
+.hairline {
+  border-color: rgb(var(--color-ink) / 0.1);
+}
+
+/* Used by HorizontalScroller — hides the native scrollbar so the row is
+   navigated with the paired arrow buttons instead of a drag track. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.case-number::before {
+  content: '№ ';
+}
+
+.spectrum-text {
+  background-image: linear-gradient(90deg, #FF6B2C, #FF8A5B, #A56B00);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.spectrum-bar {
+  height: 3px;
+  background-image: linear-gradient(90deg, #FF6B2C, #FF8A5B, #A56B00);
+  background-size: 200% auto;
+  animation: spectrumShift 6s ease-in-out infinite;
+}
+
+@keyframes spectrumShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Signature soft glow behind the hero — a very subtle warm orange
+   atmosphere concentrated behind the verification cards, never a solid
+   orange circle. */
+.eclipse-glow {
+  background: radial-gradient(circle at 50% 35%, rgba(255,107,44,0.16) 0%, rgba(255,107,44,0.08) 40%, rgba(255,107,44,0) 70%);
+}
+
+.dark .eclipse-glow {
+  background: radial-gradient(circle at 50% 35%, rgba(255,107,44,0.22) 0%, rgba(255,107,44,0.09) 40%, rgba(255,107,44,0) 72%);
+}

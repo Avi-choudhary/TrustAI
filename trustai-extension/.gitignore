@@ -1,0 +1,10 @@
+# Archives and build artifacts
+*.zip
+*.crx
+*.pem
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

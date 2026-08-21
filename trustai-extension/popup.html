@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TrustAI</title>
+  <style>
+    body {
+      width: 280px;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+      background: #F7F4EF;
+      color: #171513;
+      padding: 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+    .brand img { width: 22px; height: 22px; }
+    p { font-size: 13px; color: #625E59; line-height: 1.5; margin: 0 0 14px; }
+    .divider { border: none; border-top: 1px solid rgba(23,21,19,0.08); margin: 14px 0; }
+    label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+    .btn {
+      width: 100%;
+      border: 1px solid rgba(23,21,19,0.15);
+      background: #fff;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #171513;
+    }
+    .btn:hover { border-color: #FF6B2C; color: #FF6B2C; }
+    .btn.primary { background: #FF6B2C; border-color: #FF6B2C; color: #fff; }
+    .btn.primary:hover { background: #E85A20; color: #fff; }
+    .row { display: flex; flex-direction: column; gap: 8px; }
+    a.settings { display: block; text-align: center; font-size: 12px; color: #8A847D; margin-top: 14px; text-decoration: none; }
+    a.settings:hover { color: #171513; }
+    #fileInput { display: none; }
+    #status { font-size: 12px; color: #A56B00; margin-top: 8px; min-height: 16px; }
+  </style>
+</head>
+<body>
+  <div class="brand">
+    <img src="icons/icon32.png" alt="" />
+    <span>TrustAI</span>
+  </div>
+  <p>Right-click any image or document link on a page and choose <b>Check with TrustAI</b>. Or check a file from your computer below.</p>
+
+  <div class="row">
+    <button id="pickFileBtn" class="btn primary">Check a file…</button>
+    <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx" />
+  </div>
+  <div id="status"></div>
+
+  <hr class="divider" />
+  <a class="settings" href="options.html" target="_blank">Backend settings</a>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

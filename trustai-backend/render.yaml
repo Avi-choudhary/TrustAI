@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: trustai-backend
+    runtime: python
+    region: oregon
+    plan: free
+    branch: master
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: CORS_ORIGINS
+        value: "https://trustai.vercel.app,http://localhost:5173"
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: JWT_ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: X402_MERCHANT_ADDRESS
+        value: "0x71C8366420A0926793fe14b17bEE06941866420A"
+      - key: X402_DEFAULT_NETWORK
+        value: "eip155:8453"
+      - key: X402_USDC_PRICE_PREMIUM
+        value: "4.99"
+      - key: X402_USDC_PRICE_SCAN
+        value: "0.10"

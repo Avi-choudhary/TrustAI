@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="trustai-seal-grad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF9D6B" />
+      <stop offset="55%" stop-color="#FF6B2C" />
+      <stop offset="100%" stop-color="#D9491A" />
+    </linearGradient>
+  </defs>
+  <path d="M24 3.5 L41 10 V22.5 C41 33 34 41 24 44.5 C14 41 7 33 7 22.5 V10 Z" fill="url(#trustai-seal-grad)" />
+  <path d="M24 3.5 L41 10 V22.5 C41 33 34 41 24 44.5 C14 41 7 33 7 22.5 V10 Z" stroke="#FFD8BE" stroke-width="1.25" />
+  <path d="M13.5 15.5 H28.5 V19 H23 V33 H19 V19 H13.5 Z" fill="#FFF3EA" />
+  <path d="M25 33 L32.5 15.5 L40 33 H35.8 L34.4 29.4 H30.6 L29.2 33 Z M32.5 22.8 L31.2 26.1 H33.8 Z" fill="#FFF3EA" fill-rule="evenodd" />
+</svg>
